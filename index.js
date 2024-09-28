@@ -4,4 +4,4 @@ function test(name,by,cy){
   return r;
 }
 console.log(test("alice",1871,1964));
-console.log("heyyoooo! Brother");
+console.log("heyyoooo! Brothers");
