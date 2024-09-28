@@ -1,0 +1,57 @@
+┌──(theta㉿kali)-[~]
+└─$ sudo nmap --script vuln jcc.army.mil.bd                            
+[sudo] password for theta: 
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-09-07 10:30 +06
+Stats: 0:02:38 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 98.58% done; ETC: 10:32 (0:00:02 remaining)
+Stats: 0:06:16 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 98.58% done; ETC: 10:36 (0:00:05 remaining)
+Stats: 0:09:04 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 98.58% done; ETC: 10:39 (0:00:07 remaining)
+Nmap scan report for jcc.army.mil.bd (103.46.149.50)
+Host is up (0.027s latency).
+rDNS record for 103.46.149.50: ccapp.army.mil.bd
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE  SERVICE
+80/tcp  open   http
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+113/tcp closed ident
+443/tcp open   https
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+| http-phpmyadmin-dir-traversal: 
+|   VULNERABLE:
+|   phpMyAdmin grab_globals.lib.php subform Parameter Traversal Local File Inclusion
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2005-3299
+|       PHP file inclusion vulnerability in grab_globals.lib.php in phpMyAdmin 2.6.4 and 2.6.4-pl1 allows remote attackers to include local files via the $__redirect parameter, possibly involving the subform array.
+|       
+|     Disclosure date: 2005-10-nil
+|     Extra information:
+|       ../../../../../etc/passwd not found.
+|   
+|     References:
+|       http://www.exploit-db.com/exploits/1244/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2005-3299
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       http://ha.ckers.org/slowloris/
+|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+| http-aspnet-debug: 
+|_  status: DEBUG is enabled
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+
+Nmap done: 1 IP address (1 host up) scanned in 559.96 seconds
+ 
